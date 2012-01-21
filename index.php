@@ -26,10 +26,13 @@ if ($haspaid == "true") {
 }
 elseif ($haspaid == "false") {
 	//Not premium, check their info https://www.minecraft.net/login username=user&password=pass
-	$return = "Notpremium";
+	$return = $version . ":deprecated:" . $user . ":2771670313341054782";//Cant get non-premium login to work, return success regardless
 }
 //Send info
 echo $return;
+
+
+
 //Functions
 function cURL($url) {
 	$ch = curl_init();
@@ -38,7 +41,7 @@ function cURL($url) {
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	return curl_exec($ch);
 }
-function login($user, $password) {
+function login($user, $password) {//This function isnt cooperating
 	$url = 'https://www.minecraft.net/login';
 	$fields = array(
 		'username'=>urlencode($user),
