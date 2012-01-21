@@ -21,9 +21,9 @@ pathto.yourserver.com session.minecraft.net
 Clients
 -------
 
-*Premium clients can play on the server like normal
+* Premium clients can play on the server like normal
 
-*Non-Premium players must use an official launcher and add these 2 lines to the hosts file:
+* Non-Premium players must use an official launcher and add these 2 lines to the hosts file:
 pathto.yourserver.com login.minecraft.net
 pathto.yourserver.com session.minecraft.net
 
