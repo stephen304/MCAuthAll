@@ -6,7 +6,7 @@ $version = "1326382442000";
 //Get info
 $user = $_POST['user'];
 $password = $_POST['password'];
-$lversion = $_POST['version'];\
+$lversion = $_POST['version'];
 //Get variables override post variables if set
 if (isset($_GET['user'])) {
 	$user = $_GET['user'];
