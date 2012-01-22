@@ -30,5 +30,5 @@ Install - Clients
 Upcoming Features / To Do
 -------------------------
 
-1. Add in credential check for non-premium players
-2. Add content to joinserver/checkserver
+1. Test Code
+2. Add in credential check for non-premium players
