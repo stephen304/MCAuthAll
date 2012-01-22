@@ -4,7 +4,7 @@ $user = $_GET['user'];
 $serverId = $_GET['serverId'];
 
 //Get functions
-include 'functions.php';
+include '../functions.php';
 
 //Check if premium
 $haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
