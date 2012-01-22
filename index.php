@@ -32,6 +32,9 @@ elseif ($haspaid == "false") {
 	//Not premium, check their info https://www.minecraft.net/login username=user&password=pass
 	$return = $version . ":deprecated:" . $user . ":2771670313341054782";//Cant get non-premium login to work, return success regardless
 }
+else {//Something went horribly wrong, reject.
+	$return = "Bad login";
+}
 //Send info
 echo $return;
 ?>
