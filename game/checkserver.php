@@ -10,7 +10,7 @@ include '../functions.php';
 $haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
 if ($haspaid == "true") {
 	//User is premium, require valid credentials
-	$return = cURL("http://session.minecraft.net/game/checkserver.jsp?user=" . $user . "&serverId=" . $serverId);
+	$return = cURL("http://184.73.166.45/game/checkserver.jsp?user=" . $user . "&serverId=" . $serverId);
 }
 elseif ($haspaid == "false") {
 	//User is not premium, allow in
