@@ -39,6 +39,6 @@ if (isset($user) && isset($password)) {//Make sure there is a username and passw
 	echo $return;
 }
 else {
-	include(news.php);
+	include 'news.php';
 }
 ?>
