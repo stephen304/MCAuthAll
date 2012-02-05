@@ -1,0 +1,3 @@
+<?php
+//Put News Here
+?>

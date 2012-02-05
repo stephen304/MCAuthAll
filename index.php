@@ -21,20 +21,24 @@ if (isset($_GET['password'])) {
 if (isset($_GET['version'])) {
 	$lversion = $_GET['version'];
 }
-
-//Check name
-$haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
-if ($haspaid == "true") {
-	//They're premium, login with official MC and return a real result
-	$return = cURL("https://login.minecraft.net/?user=" . $user . "&password=" . $password . "&version=" . $lversion);
+if (isset($user) && isset($password)) {//Make sure there is a username and password before authenticating
+	//Check name
+	$haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
+	if ($haspaid == "true") {
+		//They're premium, login with official MC and return a real result
+		$return = cURL("https://login.minecraft.net/?user=" . $user . "&password=" . $password . "&version=" . $lversion);
+	}
+	elseif ($haspaid == "false") {
+		//Not premium, check their info https://www.minecraft.net/login username=user&password=pass
+		$return = $version . ":deprecated:" . $user . ":2771670313341054782";//Cant get non-premium login to work, return success regardless
+	}
+	else {//Something went horribly wrong, reject.
+		$return = "Bad login";
+	}
+	//Send info
+	echo $return;
 }
-elseif ($haspaid == "false") {
-	//Not premium, check their info https://www.minecraft.net/login username=user&password=pass
-	$return = $version . ":deprecated:" . $user . ":2771670313341054782";//Cant get non-premium login to work, return success regardless
+else {
+	include(news.php);
 }
-else {//Something went horribly wrong, reject.
-	$return = "Bad login";
-}
-//Send info
-echo $return;
 ?>
