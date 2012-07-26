@@ -1,6 +1,6 @@
 <?php
 //SETTINGS
-$version = "1326382442000";
+$version = "1333544508001";
 //SETTINGS
 
 //Get info
@@ -30,7 +30,13 @@ if (isset($user) && isset($password)) {//Make sure there is a username and passw
 	}
 	elseif ($haspaid == "false") {
 		//Not premium, check their info https://www.minecraft.net/login username=user&password=pass
-		$return = $version . ":deprecated:" . $user . ":2771670313341054782";//Cant get non-premium login to work, return success regardless
+		if (login($user, $password) == "User not premium") {
+			$return = $version . ":deprecated:" . $user . ":2771670313341054782";//Needs random token
+		}
+		else {
+			//Login failed or paradox occurred
+			$return = "Bad login";
+		}
 	}
 	else {//Something went horribly wrong, reject.
 		$return = "Bad login";
