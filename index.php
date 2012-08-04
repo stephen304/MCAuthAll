@@ -31,7 +31,9 @@ if (isset($user) && isset($password)) {//Make sure there is a username and passw
 	elseif ($haspaid == "false") {
 		//Not premium, check their info https://www.minecraft.net/login username=user&password=pass
 		if (login($user, $password) == "User not premium") {
-			$return = $version . ":deprecated:" . $user . ":2771670313341054782";//Needs random token
+			$newSess = randSess();
+			$return = $version . ":deprecated:" . $user . $newSess;
+			//Store session
 		}
 		else {
 			//Login failed or paradox occurred

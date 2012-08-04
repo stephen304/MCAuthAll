@@ -15,4 +15,12 @@ function login($user, $password) {
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	return curl_exec($ch);
 }
+function randSess() {
+	$i = 0;
+	$session = "";
+	while ($i < 19) {
+		$session = $session.mt_rand(0, 9);
+	}
+	return $session;
+}
 ?>
