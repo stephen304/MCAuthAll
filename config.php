@@ -5,6 +5,6 @@ $useDB = 0;//Default off
 $dbHost = "";
 $dbUser = "";
 $dbPass = "";
+$dbName = "";
 $dbTable = "";
-
 ?>

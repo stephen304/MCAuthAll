@@ -32,6 +32,7 @@ if (isset($user) && isset($password)) {//Make sure there is a username and passw
 			$return = $version . ":deprecated:" . $user . $newSess;
 			if ($useDB == 1) {
 				//Store $newSess
+				storeSess($user, $newSess);
 			}
 		}
 		else {

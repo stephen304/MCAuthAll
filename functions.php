@@ -23,4 +23,8 @@ function randSess() {
 	}
 	return $session;
 }
+function storeSess($user, $sess) {
+	$connection = mysql_connect($dbHost, $dbUser, $dbPass) or die(mysql_error());
+	mysql_select_db($dbName) or die(mysql_error());
+}
 ?>
