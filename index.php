@@ -1,15 +1,12 @@
 <?php
-//SETTINGS
-$version = "1333544508001";
-//SETTINGS
+//Includes
+include 'config.php';
+include 'functions.php';
 
 //Get info
 $user = $_POST['user'];
 $password = $_POST['password'];
 $lversion = $_POST['version'];
-
-//Get functions
-include 'functions.php';
 
 //Get variables override post variables if set
 if (isset($_GET['user'])) {
@@ -33,7 +30,9 @@ if (isset($user) && isset($password)) {//Make sure there is a username and passw
 		if (login($user, $password) == "User not premium") {
 			$newSess = randSess();
 			$return = $version . ":deprecated:" . $user . $newSess;
-			//Store session
+			if ($useDB == 1) {
+				//Store $newSess
+			}
 		}
 		else {
 			//Login failed or paradox occurred
