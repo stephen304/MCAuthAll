@@ -32,12 +32,12 @@ function storeSess($user, $sess) {
 	$test = mysql_fetch_array(mysql_query("SELECT EXISTS(SELECT 1 FROM ".$dbTable." WHERE name='".$user."')"));
 	if ($test[0] == 0) {
 		//Not in database, add
-		mysql_query("INSERT INTO ".$dbTable." (name, token, hash) VALUES('".$user."', '".$sess."', '0' ) ") 
+		mysql_query("INSERT INTO ".$dbTable." (name, token, hash) VALUES('".mysql_real_escape_string($user)."', '".mysql_real_escape_string($sess)."', '0' ) ") 
 			or die(mysql_error());  
 	}
 	else {
 		//Already in database, update
-		mysql_query("UPDATE ".$dbTable." SET token='".$sess."' WHERE name='".$user."'") 
+		mysql_query("UPDATE ".$dbTable." SET token='".mysql_real_escape_string($sess)."' WHERE name='".mysql_real_escape_string($user)."'") 
 			or die(mysql_error());
 	}
 }
