@@ -1,10 +1,11 @@
 <?php
+//Includes
+include '../config.php';
+include '../functions.php';
+
 //Get variables
 $user = $_GET['user'];
 $serverId = $_GET['serverId'];
-
-//Get functions
-include '../functions.php';
 
 //Check if premium
 $haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
@@ -13,8 +14,18 @@ if ($haspaid == "true") {
 	$return = cURL("http://184.73.166.45/game/checkserver.jsp?user=" . $user . "&serverId=" . $serverId);
 }
 elseif ($haspaid == "false") {
-	//User is not premium, allow in
-	$return = "YES";
+	//User is not premium, do this thang
+	if ($useDB == 1) {
+		if (checkHash($user, $serverId)) {
+			$return = "YES";
+		}
+		else {
+			$return = "NO";
+		}
+	}
+	else {
+		$return = "YES";
+	}
 }
 else {//Something went awkwardly wrong, reject the client
 	$return = "NO";

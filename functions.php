@@ -66,4 +66,27 @@ function storeHash($user, $sess, $hash) {
 		}
 	}
 }
+function checkHash($user, $hash) {
+	global $dbHost, $dbUser, $dbPass, $dbName, $dbTable;
+	$connection = mysql_connect($dbHost, $dbUser, $dbPass) or die(mysql_error());
+		mysql_select_db($dbName) or die(mysql_error());
+	
+	$test = mysql_fetch_array(mysql_query("SELECT EXISTS(SELECT 1 FROM ".$dbTable." WHERE name='".$user."')"));
+	if ($test[0] == 0) {
+		//Not in database, ERROR!!!
+		return FALSE;
+	}
+	else {
+		//Already in database, check if hash matches
+		$result = mysql_query("SELECT * FROM ".$dbTable." WHERE name='".$user."'") or die(mysql_error());
+		$row = mysql_fetch_array($result);
+		if ($row['hash'] == $hash) {
+			//Hash matches
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+	}
+}
 ?>
