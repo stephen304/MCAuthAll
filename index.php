@@ -29,7 +29,7 @@ if (isset($user) && isset($password)) {//Make sure there is a username and passw
 		//Not premium, check their info https://www.minecraft.net/login username=user&password=pass
 		if (login($user, $password) == "User not premium") {
 			$newSess = randSess();
-			$return = $version . ":deprecated:" . $user . $newSess;
+			$return = $version . ":deprecated:" . $user . ":" . $newSess;
 			if ($useDB == 1) {
 				//Store $newSess
 				storeSess($user, $newSess);
