@@ -24,7 +24,20 @@ function randSess() {
 	return $session;
 }
 function storeSess($user, $sess) {
+	global $dbHost, $dbUser, $dbPass, $dbName, $dbTable;
 	$connection = mysql_connect($dbHost, $dbUser, $dbPass) or die(mysql_error());
-	mysql_select_db($dbName) or die(mysql_error());
+		mysql_select_db($dbName) or die(mysql_error());
+	
+	$test = mysql_fetch_array(mysql_query("SELECT EXISTS(SELECT 1 FROM ".$dbTable." WHERE name='".$user."')"));
+	if ($test[0] == 0) {
+		//Not in database, add
+		mysql_query("INSERT INTO ".$dbTable." (name, token, hash) VALUES('".$user."', '".$sess."', '0' ) ") 
+			or die(mysql_error());  
+	}
+	else {
+		//Already in database, update
+		mysql_query("UPDATE ".$dbTable." SET token='".$sess."' WHERE name='".$user."'") 
+			or die(mysql_error());
+	}
 }
 ?>
