@@ -29,4 +29,3 @@ Upcoming Features / To Do
 -------------------------
 
 1. Test Code
-2. Add in credential check for non-premium players
