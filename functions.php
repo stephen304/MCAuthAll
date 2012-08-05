@@ -20,6 +20,7 @@ function randSess() {
 	$session = "";
 	while ($i < 19) {
 		$session = $session.mt_rand(0, 9);
+		$i++;
 	}
 	return $session;
 }
