@@ -41,4 +41,29 @@ function storeSess($user, $sess) {
 			or die(mysql_error());
 	}
 }
+function storeHash($user, $sess, $hash) {
+	global $dbHost, $dbUser, $dbPass, $dbName, $dbTable;
+	$connection = mysql_connect($dbHost, $dbUser, $dbPass) or die(mysql_error());
+		mysql_select_db($dbName) or die(mysql_error());
+	
+	$test = mysql_fetch_array(mysql_query("SELECT EXISTS(SELECT 1 FROM ".$dbTable." WHERE name='".$user."')"));
+	if ($test[0] == 0) {
+		//Not in database, ERROR!!!
+		return FALSE;
+	}
+	else {
+		//Already in database, check if session is OK then update
+		$result = mysql_query("SELECT * FROM ".$dbTable." WHERE name='".$user."'") or die(mysql_error());
+		$row = mysql_fetch_array($result);
+		if ($row['token'] == $sess) {
+			//Session matches, Store the $hash
+			mysql_query("UPDATE ".$dbTable." SET hash='".mysql_real_escape_string($hash)."' WHERE name='".mysql_real_escape_string($user)."'") 
+				or die(mysql_error());
+			return TRUE;
+		}
+		else {
+			return FALSE;
+		}
+	}
+}
 ?>

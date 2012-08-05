@@ -1,11 +1,12 @@
 <?php
+//Includes
+include '../config.php';
+include '../functions.php';
+
 //Get variables
 $user = $_GET['user'];
 $sessionId = $_GET['sessionId'];
 $serverId = $_GET['serverId'];
-
-//Get functions
-include '../functions.php';
 
 //Check if premium
 $haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
@@ -14,8 +15,19 @@ if ($haspaid == "true") {
 	$return = cURL("http://session.minecraft.net/game/joinserver.jsp?user=" . $user . "&sessionId=" . $sessionId . "&serverId=" . $serverId);
 }
 elseif ($haspaid == "false") {
-	//User is not premium, don't do anything and carry on
-	$return = "OK";
+	//User is not premium. If DB is true, attempt to store server hash using session ID
+	if ($useDB == 1) {
+		if (storeHash($user, $sessionId, $serverId)) {
+			$return = "OK";
+		}
+		else {
+			$return = "Bad login";
+		}
+	}
+	else {
+		//Not using DB, allow nonpremium user
+		$return = "OK";
+	}
 }
 else {//Something went awkwardly wrong, reject the client
 	$return = "Bad login";
