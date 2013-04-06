@@ -31,5 +31,5 @@ Install - Clients
 Upcoming Features / To Do
 -------------------------
 
-1. Fix non-premium login check bug
-2. Make tutorials on hex editing
+1. Make tutorials on hex editing
+2. Figure out how mojang account authing works
