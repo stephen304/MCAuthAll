@@ -15,7 +15,7 @@ Install - Server
   * Add this line to the hosts file of the server machine:
   `ip.of.your.server session.minecraft.net`
       * If this method is used, MCAuthAll CANNOT be hosted on the same machine (the scripts must be able to access the official servers)
-  * Hex edit the server class to redirect to your server. (I don't have details yet, but this is a better option)
+  * Hex edit the server jg.class to redirect to your server. (The better option)
 
 3. Edit the options.php to your liking. (Full auth mode will require mysql)
 
