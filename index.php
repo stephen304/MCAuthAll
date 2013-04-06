@@ -20,7 +20,7 @@ if (isset($_GET['version'])) {
 }
 if (isset($user) && isset($password)) {//Make sure there is a username and password before authenticating
 	//Check name
-	$haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
+	$haspaid = cURL("http://minecraft.net/haspaid.jsp?user=" . $user);
 	if ($haspaid == "true") {
 		//They're premium, login with official MC and return a real result
 		$return = cURL("https://login.minecraft.net/?user=" . $user . "&password=" . $password . "&version=" . $lversion);
