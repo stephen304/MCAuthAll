@@ -14,7 +14,7 @@ Install - Server
 2. One of these 2 options is required
   * Add this line to the hosts file of the server machine:
   `ip.of.your.server session.minecraft.net`
-      * If this method is used, MCAuthAll CANNOT be hosted on the same machine
+      * If this method is used, MCAuthAll CANNOT be hosted on the same machine (the scripts must be able to access the official servers)
   * Hex edit the server class to redirect to your server. (I don't have details yet, but this is a better option)
 
 3. Edit the options.php to your liking. (Full auth mode will require mysql)
@@ -25,10 +25,11 @@ Install - Clients
 * Premium clients can play on the server like normal
 
 * Non-Premium players must use a launcher that is modified to log in to your server
-  * As of 1.3 this means hex-editing 2 occurrences of session.minecraft.net in gx and asu class.
+  * As of 1.3 this means hex-editing 2 occurrences of session.minecraft.net in gx and asu class in mc.jar in addition to the launcher.
       * A video will soon be made explaining this.
 
 Upcoming Features / To Do
 -------------------------
 
-1. Test Code
+1. Fix non-premium login check bug
+2. Make tutorials on hex editing
