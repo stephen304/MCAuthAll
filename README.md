@@ -25,7 +25,7 @@ Install - Clients
 * Premium clients can play on the server like normal
 
 * Non-Premium players must use a launcher that is modified to log in to your server
-  * As of 1.3 this means hex-editing kn.class (1.5, login.minecraft.net) for the client's built in server and bdl.class and jg.class (1.5, session.minecraft.net, for joining) in mc.jar in addition to the launcher.
+  * As of 1.3 this means hex-editing kn.class (1.5.1, login.minecraft.net) for the client's built in server and bdl.class and jg.class (1.5.1, session.minecraft.net, for joining) in mc.jar in addition to the launcher.
       * A video will soon be made explaining this.
 
 Upcoming Features / To Do
