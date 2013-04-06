@@ -9,7 +9,7 @@ $sessionId = $_GET['sessionId'];
 $serverId = $_GET['serverId'];
 
 //Check if premium
-$haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
+$haspaid = cURL("http://minecraft.net/haspaid.jsp?user=" . $user);
 if ($haspaid == "true") {
 	//User is premium, send server id to official mc server
 	$return = cURL("http://session.minecraft.net/game/joinserver.jsp?user=" . $user . "&sessionId=" . $sessionId . "&serverId=" . $serverId);

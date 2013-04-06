@@ -8,10 +8,10 @@ $user = $_GET['user'];
 $serverId = $_GET['serverId'];
 
 //Check if premium
-$haspaid = cURL("http://www.minecraft.net/haspaid.jsp?user=" . $user);
+$haspaid = cURL("http://minecraft.net/haspaid.jsp?user=" . $user);
 if ($haspaid == "true") {
 	//User is premium, require valid credentials
-	$return = cURL("http://184.73.166.45/game/checkserver.jsp?user=" . $user . "&serverId=" . $serverId);
+	$return = cURL("http://session.minecraft.net/game/checkserver.jsp?user=" . $user . "&serverId=" . $serverId);
 }
 elseif ($haspaid == "false") {
 	//User is not premium, do this thang
