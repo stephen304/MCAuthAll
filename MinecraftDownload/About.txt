@@ -1,0 +1,10 @@
+Place the following files here:
+
+jinput.jar
+linux_natives.jar.lzma
+lwjgl.jar
+lwjgl_util.jar
+macosx_natives.jar.lzma
+minecraft.jar (modified: all login.minecraft.net -> your.ip)
+solaris_natives.jar.lzma
+windows_natives.jar.lzma
