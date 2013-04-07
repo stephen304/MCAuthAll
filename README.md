@@ -19,13 +19,21 @@ Install - Server
 
 3. Edit the options.php to your liking. (Full auth mode will require mysql)
 
+4. Perform the "Install" for clients. Place modded files in "MinecraftDownload" as described in the about file (in that directory)
+
 Install - Clients
 -----------------
 
 * Premium clients can play on the server like normal
 
 * Non-Premium players must use a launcher that is modified to log in to your server
-  * As of 1.3 this means hex-editing kn.class (1.5.1, login.minecraft.net) for the client's built in server and bdl.class and jg.class (1.5.1, session.minecraft.net, for joining) in mc.jar in addition to the launcher.
+  * Modding the launcher is more difficult:
+      * Remove SSL Cert verification
+      * Remove META-INF
+      * Hex edit login.minecraft.net to yiour server IP
+      * Hex edit the AmazonAWS download to your MinecraftDownload folder
+      * These edits are done on the ".jar" launcher. (for linux) Convert this modded .jar into mac by replacing the launcher jar in the mac package contents. For windows, use "Launch4j" to convert it into an executable.
+  * As of 1.5.1 minecraft.jar edits include hex-editing kn.class (1.5.1, login.minecraft.net for an unknown purpose) and bdl.class and jg.class (1.5.1, session.minecraft.net, for joining) in minecraft.jar.
       * A video will soon be made explaining this.
 
 Upcoming Features / To Do
